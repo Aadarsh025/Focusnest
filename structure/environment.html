@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Environments | FocusNest</title>
+
+    <!-- Environment CSS -->
+    <link rel="stylesheet"
+          href="../style/environment.css">
+</head>
+
+<body>
+
+    <div class="environment-page">
+
+        <!-- ================= HEADER ================= -->
+
+        <header class="environment-header">
+
+            <button class="back-btn" id="backBtn">
+                <span>←</span>
+            </button>
+
+            <h1>Environments</h1>
+
+        </header>
+
+
+        <!-- ================= CATEGORIES ================= -->
+
+        <nav class="environment-categories">
+
+            <button class="category active"
+                    data-category="nature">
+                Nature
+            </button>
+
+            <button class="category"
+                    data-category="rain">
+                Rain
+            </button>
+
+            <button class="category"
+                    data-category="anime">
+                Anime
+            </button>
+
+            <button class="category"
+                    data-category="night">
+                Night
+            </button>
+
+            <button class="category"
+                    data-category="cozy">
+                Cozy
+            </button>
+
+            <button class="category"
+                    data-category="space">
+                Space
+            </button>
+
+            <button class="category"
+                    data-category="minimal">
+                Minimal
+            </button>
+
+        </nav>
+
+
+        <!-- ================= ENVIRONMENT GRID ================= -->
+
+        <section class="environment-section">
+
+            <div class="environment-grid"
+                 id="environmentGrid">
+
+
+                <!-- FOREST -->
+
+                <div class="environment-card selected"
+                     data-name="Forest"
+                     data-category="nature"
+                     data-background="../images/forest.jpg">
+
+                    <img src="../images/forest.jpg"
+                         alt="Forest">
+
+                    <div class="card-overlay"></div>
+
+                    <span class="environment-name">
+                        Forest
+                    </span>
+
+                    <span class="selected-icon">
+                        ✓
+                    </span>
+
+                </div>
+
+
+                <!-- RAINY WINDOW -->
+
+                <div class="environment-card"
+                     data-name="Rainy Window"
+                     data-category="rain"
+                     data-background="../images/rainy-window.jpg">
+
+                    <img src="../images/rainy-window.jpg"
+                         alt="Rainy Window">
+
+                    <div class="card-overlay"></div>
+
+                    <span class="environment-name">
+                        Rainy Window
+                    </span>
+
+                </div>
+
+
+                <!-- MOUNTAIN -->
+
+                <div class="environment-card"
+                     data-name="Mountain"
+                     data-category="nature"
+                     data-background="../images/mountain.jpg">
+
+                    <img src="../images/mountain.jpg"
+                         alt="Mountain">
+
+                    <div class="card-overlay"></div>
+
+                    <span class="environment-name">
+                        Mountain
+                    </span>
+
+                </div>
+
+
+                <!-- OCEAN -->
+
+                <div class="environment-card"
+                     data-name="Ocean"
+                     data-category="nature"
+                     data-background="../images/ocean.jpg">
+
+                    <img src="../images/ocean.jpg"
+                         alt="Ocean">
+
+                    <div class="card-overlay"></div>
+
+                    <span class="environment-name">
+                        Ocean
+                    </span>
+
+                </div>
+
+
+                <!-- NIGHT CITY -->
+
+                <div class="environment-card"
+                     data-name="Night City"
+                     data-category="night"
+                     data-background="../images/night-city.jpg">
+
+                    <img src="../images/night-city.jpg"
+                         alt="Night City">
+
+                    <div class="card-overlay"></div>
+
+                    <span class="environment-name">
+                        Night City
+                    </span>
+
+                </div>
+
+
+                <!-- ANIME ROOM -->
+
+                <div class="environment-card"
+                     data-name="Anime Room"
+                     data-category="anime"
+                     data-background="../images/anime-room.jpg">
+
+                    <img src="../images/anime-room.jpg"
+                         alt="Anime Room">
+
+                    <div class="card-overlay"></div>
+
+                    <span class="environment-name">
+                        Anime Room
+                    </span>
+
+                </div>
+
+
+                <!-- COZY ROOM -->
+
+                <div class="environment-card"
+                     data-name="Cozy Room"
+                     data-category="cozy"
+                     data-background="../images/cozy-room.jpg">
+
+                    <img src="../images/cozy-room.jpg"
+                         alt="Cozy Room">
+
+                    <div class="card-overlay"></div>
+
+                    <span class="environment-name">
+                        Cozy Room
+                    </span>
+
+                </div>
+
+
+                <!-- UPLOAD -->
+
+                <div class="upload-card"
+                     id="uploadBackground">
+
+                    <div class="upload-plus">
+                        +
+                    </div>
+
+                    <span>
+                        Upload
+                    </span>
+
+                    <span>
+                        Your Background
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= MY BACKGROUNDS ================= -->
+
+        <section class="my-backgrounds">
+
+            <h2>My Backgrounds</h2>
+
+            <div class="my-background-grid"
+                 id="myBackgroundGrid">
+
+
+                <div class="custom-background">
+                    <img src="../images/my-bg-1.jpg"
+                         alt="My Background 1">
+                </div>
+
+
+                <div class="custom-background">
+                    <img src="../images/my-bg-2.jpg"
+                         alt="My Background 2">
+                </div>
+
+
+                <div class="custom-background">
+                    <img src="../images/my-bg-3.jpg"
+                         alt="My Background 3">
+                </div>
+
+
+                <button class="add-background"
+                        id="addBackground">
+
+                    +
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- Hidden file input -->
+
+        <input type="file"
+               id="backgroundInput"
+               accept="image/*"
+               hidden>
+
+    </div>
+
+
+    <!-- Environment JavaScript -->
+
+    <script src="../script/environments.js"></script>
+
+</body>
+
+</html>

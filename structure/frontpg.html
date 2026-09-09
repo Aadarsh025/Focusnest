@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FocusNest</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="..\style\frontstyle.css">
+</head>
+<body>
+<!-- =====================================================
+     LOGIN SCREEN
+===================================================== -->
+<div class="login-screen" id="loginScreen">
+    <div class="login-card">
+        <div class="login-logo">
+            <div class="logo-icon">
+                <i class="fa-solid fa-leaf"></i>
+            </div>
+            <h1>FocusNest</h1>
+        </div>
+        <p class="login-tagline">
+            Focus. Flow. Finish.
+        </p>
+        <h2>Welcome to FocusNest</h2>
+        <p class="login-description">
+            Create your personal focus space and make every session count.
+        </p>
+        <form id="loginForm">
+            <label for="userName">Your Name</label>
+            <div class="input-box">
+                <i class="fa-regular fa-user"></i>
+                <input
+                    type="text"
+                    id="userName"
+                    placeholder="Enter your name"
+                    required
+                    autocomplete="name"
+                >
+            </div>
+            <label for="userEmail">Email</label>
+            <div class="input-box">
+                <i class="fa-regular fa-envelope"></i>
+                <input
+                    type="email"
+                    id="userEmail"
+                    placeholder="Enter your email"
+                    required
+                    autocomplete="email"
+                >
+            </div>
+            <button type="submit" class="login-button">
+                Enter FocusNest
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </form>
+        <p class="login-footer">
+            Your productivity journey starts here.
+        </p>
+    </div>
+</div>
+<!-- =====================================================
+     MAIN APPLICATION
+===================================================== -->
+<div class="app" id="mainApp">
+    <!-- =================================================
+         SIDEBAR
+    ================================================== -->
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-icon">
+                <i class="fa-solid fa-leaf"></i>
+            </div>
+            <div>
+                <h2>FocusNest</h2>
+                <span>Focus. Flow. Finish.</span>
+            </div>
+        </div>
+        <nav class="navigation">
+            <a href="#" class="nav-item active">
+                <i class="fa-solid fa-house"></i>
+                <span>Today</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fa-regular fa-square-check"></i>
+                <span>Tasks</span>
+            </a>
+            <a href="focus-session.html" class="nav-item">
+                <i class="fa-regular fa-clock"></i>
+                <span>Focus Sessions</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fa-solid fa-chart-column"></i>
+                <span>Statistics</span>
+            </a>
+            <a href="environment.html" class="nav-item">
+                <i class="fa-solid fa-tree"></i>
+                <span>Environments</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fa-solid fa-music"></i>
+                <span>Music</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fa-regular fa-bookmark"></i>
+                <span>Presets</span>
+            </a>
+        </nav>
+        <div class="sidebar-bottom">
+            <a href="#" class="nav-item">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+            </a>
+            <a href="help_support.html" class="nav-item">
+                <i class="fa-regular fa-circle-question"></i>
+                <span>Help & Support</span>
+            </a>
+            <div class="profile">
+                <div class="profile-picture">
+                    <span id="profileInitial">A</span>
+                </div>
+                <div class="profile-info">
+                    <strong id="profileName">Aadarsh</strong>
+                    <span>View Profile</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <!-- =================================================
+         MAIN CONTENT
+    ================================================== -->
+    <main class="main-content">
+        <!-- TOP HEADER -->
+        <header class="top-header">
+            <div>
+                <h1 id="greeting">
+                    Good Morning! 👋
+                </h1>
+                <p>
+                    What are you focusing on today?
+                </p>
+            </div>
+            <button class="add-task-button" id="openTaskModal">
+                <i class="fa-solid fa-plus"></i>
+                Add New Task
+            </button>
+        </header>
+        <!-- =================================================
+             DASHBOARD
+        ================================================== -->
+        <section class="dashboard">
+            <!-- TASK SECTION -->
+            <div class="tasks-section">
+                <div class="section-title">
+                    <h2>Today's Tasks</h2>
+                    <span id="taskCount">
+                        0 Tasks
+                    </span>
+                </div>
+                <div class="task-list" id="taskList">
+                    <!-- Tasks are inserted using JavaScript -->
+                </div>
+                <!-- EMPTY STATE -->
+                <div class="empty-state" id="emptyState">
+                    <div class="empty-icon">
+                        <i class="fa-regular fa-clipboard"></i>
+                    </div>
+                    <h3>No tasks yet</h3>
+                    <p>
+                        Add your first task and start focusing.
+                    </p>
+                    <button onclick="openTaskModal()">
+                        <i class="fa-solid fa-plus"></i>
+                        Create Task
+                    </button>
+                </div>
+            </div>
+            <!-- =================================================
+                 RIGHT SIDE CARDS
+            ================================================== -->
+            <div class="right-panel">
+                <!-- TODAY'S FOCUS -->
+                <div class="focus-card">
+                    <div class="card-header">
+                        <span>
+                            Today's Focus
+                        </span>
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <div class="focus-time" id="focusTime">
+                        0h 00m
+                    </div>
+                    <div class="bar-chart">
+                        <span ></span>
+                        <span ></span>
+                        <span ></span>
+                        <span ></span>
+                        <span ></span>
+                        <span ></span>
+                        <span ></span>
+                    </div>
+                    <div class="chart-labels">
+                        <span>0</span>
+                        <span>6</span>
+                        <span>12</span>
+                        <span>18</span>
+                        <span>24</span>
+                    </div>
+                </div>
+                <!-- QUOTE -->
+                <div class="quote-card">
+                    <i class="fa-solid fa-quote-left"></i>
+                    <p>
+                        “Discipline is choosing between what you want now
+                        and what you want most.”
+                    </p>
+                    <span>
+                        — Abraham Lincoln
+                    </span>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+<!-- =====================================================
+     ADD NEW TASK MODAL
+===================================================== -->
+<div class="modal-overlay" id="taskModal">
+    <div class="task-modal">
+        <div class="modal-header">
+            <h2>Add New Task</h2>
+            <button
+                class="close-button"
+                id="closeTaskModal"
+                type="button"
+                aria-label="Close add new task window">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <form id="taskForm">
+            <!-- TASK NAME -->
+            <div class="form-group">
+                <label for="taskName">
+                    Task Name
+                </label>
+                <input
+                    type="text"
+                    id="taskName"
+                    placeholder="e.g. Study Deep Learning"
+                    required
+                >
+            </div>
+            <!-- DESCRIPTION -->
+            <div class="form-group">
+                <label for="taskDescription">
+                    Description <span>(optional)</span>
+                </label>
+                <textarea
+                    id="taskDescription"
+                    placeholder="Write a short description..."
+                ></textarea>
+            </div>
+            <!-- PRESETS -->
+            <div class="form-group">
+                <label>
+                    Choose a Preset <span>(optional)</span>
+                </label>
+                <div class="preset-container">
+                    <button
+                        type="button"
+                        class="preset active"
+                        data-duration="25"
+                    >
+                        Default
+                    </button>
+                    <button
+                        type="button"
+                        class="preset"
+                        data-duration="50"
+                    >
+                        Deep Work
+                    </button>
+                    <button
+                        type="button"
+                        class="preset"
+                        data-duration="25"
+                    >
+                        Quick Study
+                    </button>
+                    <button
+                        type="button"
+                        class="preset"
+                        data-duration="45"
+                    >
+                        Coding Mode
+                    </button>
+                </div>
+            </div>
+            <!-- CREATE BUTTON -->
+            <button
+                type="submit"
+                class="create-task-button"
+            >
+                <i class="fa-solid fa-plus"></i>
+                Create Task
+            </button>
+        </form>
+    </div>
+</div>
+<script src="../script/script.js"></script>
+</body>
+</html>

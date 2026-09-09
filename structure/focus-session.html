@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FocusNest - Focus Session</title>
+
+    <!-- Focus Session CSS -->
+    <link rel="stylesheet" href="../style/focusstyle.css">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+</head>
+
+
+<body>
+
+<div class="app" id="app">
+
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="top-bar">
+
+        <!-- Back Button -->
+
+        <button
+            class="back-btn"
+            onclick="goBack()"
+            type="button"
+        >
+            ←
+            <span>Back to Tasks</span>
+        </button>
+
+
+        <!-- Session Title -->
+
+        <div class="session-title">
+
+            <h1>
+
+                <span id="sessionTaskTitle">
+                    Loading task...
+                </span>
+
+                <button
+                    class="edit-title"
+                    onclick="editTask()"
+                    type="button"
+                    title="Edit task"
+                >
+                    ✎
+                </button>
+
+            </h1>
+
+
+            <!-- Focus / Break Switch -->
+
+            <div class="session-switch">
+
+                <button
+                    id="focusTab"
+                    class="active"
+                    onclick="switchMode('focus')"
+                    type="button"
+                >
+                    Focus
+                </button>
+
+
+                <button
+                    id="breakTab"
+                    onclick="switchMode('break')"
+                    type="button"
+                >
+                    Break
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Header Actions -->
+
+        <div class="header-actions">
+
+            <button
+                class="glass-btn"
+                onclick="openMusic()"
+                type="button"
+            >
+                🎵
+                <span>Music</span>
+            </button>
+
+
+            <button
+                class="glass-btn"
+                onclick="openEnvironment()"
+                type="button"
+            >
+                🌲
+                <span>Environment</span>
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             CURRENT TASK
+        ================================================== -->
+
+        <section class="current-task">
+
+            <div class="task-heading">
+
+                <div>
+
+                    <small>
+                        CURRENT TASK
+                    </small>
+
+
+                    <h2 id="currentTaskTitle">
+                        Loading task...
+                    </h2>
+
+
+                    <p
+                        id="currentTaskDescription"
+                        class="current-task-description"
+                    ></p>
+
+                </div>
+
+
+                <button
+                    class="small-action"
+                    onclick="openTasks()"
+                    type="button"
+                >
+                    ☰ Tasks
+                </button>
+
+            </div>
+
+
+            <!-- Task Progress -->
+
+            <div class="task-progress">
+
+                <div class="progress-info">
+
+                    <span id="taskProgressText">
+                        0 of 0 tasks completed
+                    </span>
+
+
+                    <span id="taskProgressPercent">
+                        0%
+                    </span>
+
+                </div>
+
+
+                <div class="progress-bar">
+
+                    <div
+                        class="progress-fill"
+                        id="taskProgress"
+                    ></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FOCUS TIMER
+        ================================================== -->
+
+        <section class="timer-section">
+
+            <div
+                class="timer-ring"
+                id="timerRing"
+            >
+
+                <div class="leaf">
+                    🌿
+                </div>
+
+
+                <div class="timer-content">
+
+                    <span
+                        class="timer-label"
+                        id="timerLabel"
+                    >
+                        FOCUS
+                    </span>
+
+
+                    <div
+                        class="timer"
+                        id="timer"
+                    >
+                        25:00
+                    </div>
+
+
+                    <button
+                        class="pause-btn"
+                        id="pauseBtn"
+                        onclick="toggleTimer()"
+                        type="button"
+                    >
+                        ❚❚
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Session Information -->
+
+            <div class="session-info">
+
+                <span id="sessionText">
+                    Session 1 of 4
+                </span>
+
+
+                <div class="session-dots">
+
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SESSION ACTIONS
+        ================================================== -->
+
+        <section class="quick-controls">
+
+
+            <!-- Notes -->
+
+            <button
+                onclick="openNotes()"
+                type="button"
+            >
+
+                📝
+
+                <div>
+
+                    <strong>
+                        Quick Note
+                    </strong>
+
+                    <small>
+                        Capture your thoughts
+                    </small>
+
+                </div>
+
+            </button>
+
+
+
+            <!-- Distraction -->
+
+            <button
+                onclick="logDistraction()"
+                type="button"
+            >
+
+                🔕
+
+
+                <div>
+
+                    <strong>
+
+                        <span id="distractionCount">
+                            0
+                        </span>
+
+                        Distractions
+
+                    </strong>
+
+
+                    <small>
+                        Log distraction
+                    </small>
+
+                </div>
+
+            </button>
+
+
+
+            <!-- Tasks -->
+
+            <button
+                onclick="openTasks()"
+                type="button"
+            >
+
+                🎯
+
+
+                <div>
+
+                    <strong>
+
+                        <span id="completedTasks">
+                            0
+                        </span>
+
+                        /
+
+                        <span id="totalTasks">
+                            0
+                        </span>
+
+                        Tasks Complete
+
+                    </strong>
+
+
+                    <small>
+                        View checklist
+                    </small>
+
+                </div>
+
+            </button>
+
+
+
+            <!-- Statistics -->
+
+            <button
+                onclick="openStats()"
+                type="button"
+            >
+
+                📊
+
+
+                <div>
+
+                    <strong>
+                        Session Stats
+                    </strong>
+
+
+                    <small>
+                        View performance
+                    </small>
+
+                </div>
+
+            </button>
+
+        </section>
+
+
+
+        <!-- =================================================
+             BREAK PANEL
+        ================================================== -->
+
+        <section
+            class="break-panel hidden"
+            id="breakPanel"
+        >
+
+            <div class="break-icon">
+                ☕
+            </div>
+
+
+            <h2>
+                Break Time
+            </h2>
+
+
+            <div
+                class="break-timer"
+                id="breakTimer"
+            >
+                10:00
+            </div>
+
+
+            <p>
+                Relax and recharge!
+            </p>
+
+
+            <div class="break-suggestion">
+
+                <span>
+                    ✨ Recommended
+                </span>
+
+
+                <strong id="breakSuggestion">
+                    Rest your eyes for 20 seconds
+                </strong>
+
+            </div>
+
+
+            <div class="break-actions">
+
+                <button
+                    onclick="startBreathing()"
+                    type="button"
+                >
+                    🫁 Breathing
+                </button>
+
+
+                <button
+                    onclick="nextBreakSuggestion()"
+                    type="button"
+                >
+                    🔄 New Activity
+                </button>
+
+
+                <button
+                    class="skip-break"
+                    onclick="skipBreak()"
+                    type="button"
+                >
+                    ▷ Skip Break
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FOCUS GOAL
+        ================================================== -->
+
+        <section class="focus-goal">
+
+            <div>
+
+                <span>
+                    🎯 Today's Focus Goal
+                </span>
+
+
+                <strong id="focusGoal">
+                    Focus on your current task
+                </strong>
+
+            </div>
+
+
+            <button
+                onclick="editGoal()"
+                type="button"
+            >
+                ✎
+            </button>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         BOTTOM MUSIC PLAYER
+    ====================================================== -->
+
+    <div
+        class="music-player"
+        id="musicPlayer"
+    >
+
+        <div class="music-info">
+
+            <div class="album-art">
+                🎵
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Lo-fi Beats
+                </strong>
+
+
+                <small>
+                    FocusNest Music
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="music-controls">
+
+            <button
+                onclick="previousSong()"
+                type="button"
+                aria-label="Previous song"
+            >
+                |◀
+            </button>
+
+
+            <button
+                class="music-play"
+                id="musicPlay"
+                onclick="toggleMusic()"
+                type="button"
+                aria-label="Play or pause music"
+            >
+                ▶
+            </button>
+
+
+            <button
+                onclick="nextSong()"
+                type="button"
+                aria-label="Next song"
+            >
+                ▶|
+            </button>
+
+        </div>
+
+
+        <div class="volume-control">
+
+            🔊
+
+
+            <input
+                type="range"
+                min="0"
+                max="100"
+                value="70"
+                id="volume"
+                aria-label="Volume"
+            >
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         BOTTOM RIGHT ACTIONS
+    ====================================================== -->
+
+    <div class="bottom-actions">
+
+        <button
+            onclick="toggleFullscreen()"
+            type="button"
+        >
+            ⛶
+            <span>Focus Mode</span>
+        </button>
+
+
+        <button
+            onclick="openCustomize()"
+            type="button"
+        >
+            ⚙
+            <span>Customize</span>
+        </button>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         TASK MODAL
+    ====================================================== -->
+
+    <div
+        class="modal-overlay"
+        id="taskModal"
+    >
+
+        <div class="modal">
+
+            <button
+                class="close-btn"
+                onclick="closeModal('taskModal')"
+                type="button"
+            >
+                ×
+            </button>
+
+
+            <h2>
+                Current Tasks
+            </h2>
+
+
+            <p
+                class="modal-subtitle"
+                id="sessionTaskSubtitle"
+            >
+                Your FocusNest tasks
+            </p>
+
+
+            <!-- JavaScript will insert tasks here -->
+
+            <div
+                class="task-list"
+                id="sessionTaskList"
+            ></div>
+
+
+            <button
+                class="primary-btn"
+                onclick="closeModal('taskModal')"
+                type="button"
+            >
+                Done
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         NOTES MODAL
+    ====================================================== -->
+
+    <div
+        class="modal-overlay"
+        id="notesModal"
+    >
+
+        <div class="modal">
+
+            <button
+                class="close-btn"
+                onclick="closeModal('notesModal')"
+                type="button"
+            >
+                ×
+            </button>
+
+
+            <h2>
+                📝 Quick Note
+            </h2>
+
+
+            <textarea
+                id="quickNote"
+                placeholder="Write your thought here..."
+            ></textarea>
+
+
+            <button
+                class="primary-btn"
+                onclick="saveNote()"
+                type="button"
+            >
+                Save Note
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         STATISTICS MODAL
+    ====================================================== -->
+
+    <div
+        class="modal-overlay"
+        id="statsModal"
+    >
+
+        <div class="modal stats-modal">
+
+            <button
+                class="close-btn"
+                onclick="closeModal('statsModal')"
+                type="button"
+            >
+                ×
+            </button>
+
+
+            <h2>
+                Session Statistics
+            </h2>
+
+
+            <div class="stats-grid">
+
+
+                <div class="stat">
+
+                    <span>
+                        ⏱️
+                    </span>
+
+
+                    <strong id="statFocus">
+                        0m
+                    </strong>
+
+
+                    <small>
+                        Focused
+                    </small>
+
+                </div>
+
+
+
+                <div class="stat">
+
+                    <span>
+                        🔕
+                    </span>
+
+
+                    <strong id="statDistractions">
+                        0
+                    </strong>
+
+
+                    <small>
+                        Distractions
+                    </small>
+
+                </div>
+
+
+
+                <div class="stat">
+
+                    <span>
+                        🎯
+                    </span>
+
+
+                    <strong id="statTasks">
+                        0/0
+                    </strong>
+
+
+                    <small>
+                        Tasks
+                    </small>
+
+                </div>
+
+
+
+                <div class="stat">
+
+                    <span>
+                        🔥
+                    </span>
+
+
+                    <strong>
+                        7
+                    </strong>
+
+
+                    <small>
+                        Day Streak
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="focus-score">
+
+                <span>
+                    Your Focus Score
+                </span>
+
+
+                <strong id="focusScore">
+                    100%
+                </strong>
+
+
+                <small>
+                    Excellent focus!
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         ENVIRONMENT MODAL
+    ====================================================== -->
+
+    <div
+        class="modal-overlay"
+        id="environmentModal"
+    >
+
+        <div class="modal">
+
+            <button
+                class="close-btn"
+                onclick="closeModal('environmentModal')"
+                type="button"
+            >
+                ×
+            </button>
+
+
+            <h2>
+                🌲 Environment
+            </h2>
+
+
+            <div class="environment-grid">
+
+
+                <button
+                    onclick="changeEnvironment('forest')"
+                    type="button"
+                >
+                    🌲
+                    <span>Forest</span>
+                </button>
+
+
+                <button
+                    onclick="changeEnvironment('rain')"
+                    type="button"
+                >
+                    🌧️
+                    <span>Rain</span>
+                </button>
+
+
+                <button
+                    onclick="changeEnvironment('library')"
+                    type="button"
+                >
+                    📚
+                    <span>Library</span>
+                </button>
+
+
+                <button
+                    onclick="changeEnvironment('fireplace')"
+                    type="button"
+                >
+                    🔥
+                    <span>Fireplace</span>
+                </button>
+
+
+                <button
+                    onclick="changeEnvironment('ocean')"
+                    type="button"
+                >
+                    🌊
+                    <span>Ocean</span>
+                </button>
+
+
+                <button
+                    onclick="changeEnvironment('cafe')"
+                    type="button"
+                >
+                    ☕
+                    <span>Café</span>
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         MUSIC MODAL
+    ====================================================== -->
+
+    <div
+        class="modal-overlay"
+        id="musicModal"
+    >
+
+        <div class="modal">
+
+            <button
+                class="close-btn"
+                onclick="closeModal('musicModal')"
+                type="button"
+            >
+                ×
+            </button>
+
+
+            <h2>
+                🎵 Music
+            </h2>
+
+
+            <div class="playlist">
+
+
+                <button
+                    onclick="selectMusic('Lo-fi Beats')"
+                    type="button"
+                >
+                    🎧 Lo-fi Beats
+                </button>
+
+
+                <button
+                    onclick="selectMusic('Deep Focus')"
+                    type="button"
+                >
+                    🌊 Deep Focus
+                </button>
+
+
+                <button
+                    onclick="selectMusic('Rain Sounds')"
+                    type="button"
+                >
+                    🌧️ Rain Sounds
+                </button>
+
+
+                <button
+                    onclick="selectMusic('Calm Piano')"
+                    type="button"
+                >
+                    🎹 Calm Piano
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         CUSTOMIZE MODAL
+    ====================================================== -->
+
+    <div
+        class="modal-overlay"
+        id="customizeModal"
+    >
+
+        <div class="modal">
+
+            <button
+                class="close-btn"
+                onclick="closeModal('customizeModal')"
+                type="button"
+            >
+                ×
+            </button>
+
+
+            <h2>
+                ⚙ Customize Session
+            </h2>
+
+
+            <div class="settings">
+
+
+                <!-- Focus Duration -->
+
+                <label>
+
+                    Focus Duration
+
+                    <select id="focusDuration">
+
+                        <option value="25">
+                            25 minutes
+                        </option>
+
+                        <option value="45">
+                            45 minutes
+                        </option>
+
+                        <option value="50">
+                            50 minutes
+                        </option>
+
+                        <option value="60">
+                            60 minutes
+                        </option>
+
+                    </select>
+
+                </label>
+
+
+
+                <!-- Break Duration -->
+
+                <label>
+
+                    Break Duration
+
+                    <select id="breakDuration">
+
+                        <option value="5">
+                            5 minutes
+                        </option>
+
+                        <option value="10">
+                            10 minutes
+                        </option>
+
+                        <option value="15">
+                            15 minutes
+                        </option>
+
+                    </select>
+
+                </label>
+
+
+
+                <!-- Auto Start Break -->
+
+                <label class="toggle-row">
+
+                    <span>
+                        Auto-start breaks
+                    </span>
+
+
+                    <input
+                        type="checkbox"
+                        id="autoBreak"
+                        checked
+                    >
+
+                </label>
+
+
+
+                <!-- Auto Start Focus -->
+
+                <label class="toggle-row">
+
+                    <span>
+                        Auto-start focus
+                    </span>
+
+
+                    <input
+                        type="checkbox"
+                        id="autoFocus"
+                    >
+
+                </label>
+
+
+
+                <!-- Session Sound -->
+
+                <label class="toggle-row">
+
+                    <span>
+                        Session sound
+                    </span>
+
+
+                    <input
+                        type="checkbox"
+                        id="sessionSound"
+                        checked
+                    >
+
+                </label>
+
+            </div>
+
+
+            <button
+                class="primary-btn"
+                onclick="applySettings()"
+                type="button"
+            >
+                Save Settings
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         BREATHING MODAL
+    ====================================================== -->
+
+    <div
+        class="modal-overlay"
+        id="breathingModal"
+    >
+
+        <div class="modal breathing-modal">
+
+            <button
+                class="close-btn"
+                onclick="closeModal('breathingModal')"
+                type="button"
+            >
+                ×
+            </button>
+
+
+            <h2>
+                🫁 Breathing Exercise
+            </h2>
+
+
+            <div
+                class="breathing-circle"
+                id="breathingCircle"
+            ></div>
+
+
+            <h3 id="breathingText">
+                Breathe In
+            </h3>
+
+
+            <p>
+                Follow the circle and relax.
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         COMPLETE MODAL
+    ====================================================== -->
+
+    <div
+        class="modal-overlay"
+        id="completeModal"
+    >
+
+        <div class="modal completion-modal">
+
+
+            <div class="completion-icon">
+                ✓
+            </div>
+
+
+            <h2>
+                Focus Complete!
+            </h2>
+
+
+            <p>
+                Great work! You completed your focus session.
+            </p>
+
+
+            <div
+                class="completion-time"
+                id="completionTime"
+            >
+                Focus session completed
+            </div>
+
+
+            <div class="completion-actions">
+
+
+                <button
+                    class="primary-btn"
+                    onclick="startBreakFromComplete()"
+                    type="button"
+                >
+                    Start Break
+                </button>
+
+
+                <button
+                    class="secondary-btn"
+                    onclick="closeModal('completeModal')"
+                    type="button"
+                >
+                    Continue Later
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+</div>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+====================================================== -->
+
+<script src="../script/focuscript.js"></script>
+
+</body>
+
+</html>
