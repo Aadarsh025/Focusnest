@@ -17,7 +17,7 @@ FocusNest is a productivity and focus-management web application designed to hel
 ### 🌲 Environment
 ![Environment](Assets/images/environment.png)
 
-### 📊 Help & Support
+### 🆘 Help & Support
 ![Help & Support](Assets/images/help&support.png)
 
 ---
